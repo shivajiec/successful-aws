@@ -17,7 +17,7 @@ phases:
     commands:
       - echo "Running tests..."
       - echo "Building Docker image..."
-      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+      - echo "$DOCK_REG_PASSWORD" | docker login -u "$DOCK_REG_USERNAME" --password-stdin "$DOCK_REG_URL"
       - docker build -t "$DOCK_REG_USERNAME/$DOCK_REG_URL/success-aws:latest" .
       - docker push "$DOCK_REG_USERNAME/$DOCK_REG_URL/success-aws:latest"
   post_build:
