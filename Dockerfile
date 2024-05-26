@@ -10,7 +10,7 @@ COPY successful-aws/requirement.txt .
 # Install the project dependencies ok
 RUN pip install -r successful-aws/requirement.txt
 
-# Copy the application code into the container
+# Copy the application code into the container, and install
 COPY . .
 
 # Expose the port the Flask application will be listening on
