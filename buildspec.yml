@@ -4,8 +4,8 @@ env:
   parameter-store:
     DOCK_REG_USERNAME: /docker-cred/username
     DOCK_REG_PASSWORD: /docker-cred/passwd
-    DOCK_REG_URL: /docker-cred/url
-phases:
+  
+  phases:
   install:
     runtime-versions:
       python: 3.11
@@ -17,9 +17,9 @@ phases:
     commands:
       - echo "Running tests..."
       - echo "Building Docker image..."
-      - echo "$DOCK_REG_PASSWORD" | docker login -u "$DOCK_REG_USERNAME" --password-stdin "$DOCK_REG_URL"
-      - docker build -t "$DOCK_REG_USERNAME/$DOCK_REG_URL/success-aws:latest" .
-      - docker push "$DOCK_REG_USERNAME/$DOCK_REG_URL/success-aws:latest"
+      - docker login -u $DOCK_REG_USERNAME -p $DOCK_REG_PASSWORD docker.io
+      - docker build -t "$DOCK_REG_USERNAME/success-aws:latest" .
+      - docker push "$DOCK_REG_USERNAME/success-aws:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
