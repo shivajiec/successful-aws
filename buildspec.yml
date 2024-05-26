@@ -18,8 +18,8 @@ env:
       - echo "Running tests..."
       - echo "Building Docker image..."
       - docker login -u $DOCK_REG_USERNAME -p $DOCK_REG_PASSWORD docker.io
-      - docker build -t "$DOCK_REG_USERNAME/shivpriya/aws-cicd-success" .
-      - docker push "$DOCK_REG_USERNAME/shivpriya/aws-cicd-success"
+      - docker build -t "$DOCK_REG_USERNAME/shivpriya/aws-cicd-success:latest" .
+      - docker push "$DOCK_REG_USERNAME/shivpriya/aws-cicd-success:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
