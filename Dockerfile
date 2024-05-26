@@ -5,10 +5,10 @@ FROM python:3.8
 WORKDIR /app
 
 # Copy the requirements file
-COPY requirement.txt .
+COPY successful-aws/requirement.txt .
 
 # Install the project dependencies ok
-RUN pip install -r requirement.txt
+RUN pip install -r successful-aws/requirement.txt
 
 # Copy the application code into the container
 COPY . .
