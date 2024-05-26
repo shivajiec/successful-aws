@@ -2,9 +2,9 @@ version: 0.2
 
 env:
   parameter-store:
-    DOCKER_REGISTRY_USERNAME: /myapp/docker-credential/username
-    DOCKER_REGISTRY_PASSWORD: /myapp/docker-credential/password
-    DOCKER_REGISTRY_URL: /myapp/docker-credential/url
+    DOCK_REG_USERNAME: /docker-cred/username
+    DOCK_REG_PASSWORD: /docker-cred/passwd
+    DOCK_REG_URL: /docker-cred/url
 phases:
   install:
     runtime-versions:
@@ -16,15 +16,13 @@ phases:
   build:
     commands:
       - echo "Running tests..."
-      # cd successful-aws/
       - echo "Building Docker image..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_USERNAME/success-aws:latest" .
-      - docker push "$DOCKER_REGISTRY_USERNAME/success-aws:latest"
+      - docker build -t "$DOCK_REG_USERNAME/$DOCK_REG_URL/success-aws:latest" .
+      - docker push "$DOCK_REG_USERNAME/$DOCK_REG_URL/success-aws:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
 artifacts:
   files:
     - '**/*'
-  #base-directory: ../simple-python-app
