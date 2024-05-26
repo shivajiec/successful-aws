@@ -19,8 +19,8 @@ phases:
       # cd successful-aws/
       - echo "Building Docker image..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_USERNAME/simple-python-flask-app2:latest" .
-      - docker push "$DOCKER_REGISTRY_USERNAME/simple-python-flask2-app:latest"
+      - docker build -t "$DOCKER_REGISTRY_USERNAME/success-aws:latest" .
+      - docker push "$DOCKER_REGISTRY_USERNAME/success-aws:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
