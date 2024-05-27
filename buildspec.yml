@@ -4,7 +4,7 @@ env:
   parameter-store:
     DOCK_REG_USERNAME: /docker-cred/username
     DOCK_REG_PASSWORD: /docker-cred/passwd
-  
+    DOCKER_REG_URL: /docker-cred/url
   phases:
   install:
     runtime-versions:
@@ -17,9 +17,9 @@ env:
     commands:
       - echo "Running tests..."
       - echo "Building Docker image..."
-      - docker login -u $DOCK_REG_USERNAME -p $DOCK_REG_PASSWORD docker.io
-      - docker build -t "$DOCK_REG_USERNAME/simple-python-flask-app:latest" .
-      - docker push "$DOCK_REG_USERNAME/simple-python-flask-app:latest"
+      - echo "$DOCK_REG_PASSWORD" | docker login -u "$DOCK_REG_USERNAME" --password-stdin "$DOCKER_REG_URL"
+      - docker build -t "$DOCKER_REG_URL/$DOCK_REG_USERNAME/adi-janu:latest"
+      - docker push "$DOCKER_REG_URL/$DOCK_REG_USERNAME/adi-janu:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
