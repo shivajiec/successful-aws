@@ -19,7 +19,7 @@ env:
       - echo "Building Docker image..."
       - echo "$DOCK_REG_PASSWORD" | docker login -u "$DOCK_REG_USERNAME" --password-stdin "$DOCKER_REG_URL"
       - docker build -t "$DOCKER_REG_URL/$DOCK_REG_USERNAME/adi-janu:latest" .
-      - docker push "$DOCKER_REG_URL/$DOCK_REG_USERNAME/adi-janu:latest"
+      - docker push "docker.io/shivpriya/adi-janu:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
