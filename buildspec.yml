@@ -5,7 +5,8 @@ env:
     DOCK_REG_USERNAME: /docker-cred/username
     DOCK_REG_PASSWORD: /docker-cred/passwd
     DOCKER_REG_URL: /docker-cred/url
-  phases:
+  
+Phases:
   install:
     runtime-versions:
       python: 3.11
