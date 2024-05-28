@@ -1,4 +1,9 @@
 set -e
 
 #stop running container if any#
-echo "hi, Hello"
+#!/bin/bash
+ids=$(docker ps -aq)
+for id in $ids
+do
+    echo "$id"
+    docker stop $id && docker rm $id
