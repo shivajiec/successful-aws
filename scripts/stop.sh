@@ -7,3 +7,4 @@ for id in $ids
 do
     echo "$id"
     docker stop $id && docker rm $id
+done
